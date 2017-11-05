@@ -69,69 +69,66 @@ require(['config'], function() {
 			});
 			return p;
 		}
-		runAsync1()
-			.then(function(data) {
-				console.log(data);
-				return runAsync2();
-			})
-			.then(function(data) {
-				console.log(data);
-				return '直接返回数据'; //这里直接返回数据
-			})
-			.then(function(data) {
-				console.log(data);
-			});
-
-		function getNumber() {
-			var p = new Promise(function(resolve, reject) {
-				//做一些异步操作
-				setTimeout(function() {
-					var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
-					if(num <= 5) {
-						resolve(num);
-					} else {
-						reject('数字太大了');
-					}
-				}, 2000);
-			});
-			return p;
-		}
-
-		getNumber()
-			.then(
-				function(data) {
-					console.log('resolved');
-					console.log(data);
-				},
-				function(reason, data) {
-					console.log('rejected');
-					console.log(reason);
-				}
-			);
-		getNumber()
-			.then(function(data) {
-				console.log('resolved');
-				console.log(data);
-				console.log(somedata); //此处的somedata未定义
-			})
-			.catch(function(reason) {
-				console.log('rejected');
-				console.log(reason);
-			});
-
-		Promise
-			.all([runAsync1(), runAsync2(), runAsync3()])
-			.then(function(results) {
-				console.log(results);
-			});
-
-		Promise
-			.race([runAsync1(), runAsync2(), runAsync3()])
-			.then(function(results) {
-				console.log(results);
-			});
-
-		//请求某个图片资源
+//		runAsync1()
+//			.then(function(data) {
+//				console.log(data+'001');
+//				return runAsync2();
+//			})
+//			.then(function(data) {
+//				console.log(data+'002');
+//				return '直接返回数据'; //这里直接返回数据
+//			})
+//			.then(function(data) {
+//				console.log(data+'003');
+//			});
+//
+//		function getNumber() {
+//			var p = new Promise(function(resolve, reject) {
+//				//做一些异步操作
+//				setTimeout(function() {
+//					var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
+//					if(num <= 5) {
+//						resolve(num);
+//					} else {
+//						reject('数字太大了');
+//					}
+//				}, 2000);
+//			});
+//			return p;
+//		}
+//		getNumber()
+//			.then(
+//				function(data) {
+//					console.log('resolved');
+//					console.log(data);
+//				},
+//				function(reason, data) {
+//					console.log('rejected');
+//					console.log(reason);
+//				}
+//			);
+//		getNumber()
+//			.then(function(data) {
+//				console.log('resolved');
+//				console.log(data);
+//				console.log(somedata); //此处的somedata未定义
+//			})
+//			.catch(function(reason) {
+//				console.log('rejected');
+//				console.log(reason);
+//			});
+//		Promise
+//			.all([runAsync1(), runAsync2(), runAsync3()])
+//			.then(function(results) {
+//				console.log(results);
+//			});
+//		Promise
+//			.race([runAsync1(), runAsync2(), runAsync3()])
+//			.then(function(results) {
+//				console.log(results);
+//			});
+//
+//		//请求某个图片资源
 		function requestImg() {
 			var p = new Promise(function(resolve, reject) {
 				var img = new Image();
@@ -142,7 +139,6 @@ require(['config'], function() {
 			});
 			return p;
 		}
-
 		//延时函数，用于给请求计时
 		function timeout() {
 			var p = new Promise(function(resolve, reject) {

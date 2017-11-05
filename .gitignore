@@ -1,1 +1,4 @@
 .project
+
+/WebPack/node_modules
+/WebPack/build
